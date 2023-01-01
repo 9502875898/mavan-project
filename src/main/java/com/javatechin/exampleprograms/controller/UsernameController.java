@@ -1,5 +1,6 @@
 package com.javatechin.exampleprograms.controller;
 
+import com.javatechin.exampleprograms.ApiResponse;
 import com.javatechin.exampleprograms.enitiy.UserName;
 import com.javatechin.exampleprograms.dto.UserRequest;
 import com.javatechin.exampleprograms.service.UserNameService;
@@ -17,8 +18,10 @@ public class UsernameController {
     UserNameService userNameService;
 
     @PostMapping("/save")
-    public ResponseEntity<Object>saveUserName(@RequestBody UserRequest userRequest){
-    return new ResponseEntity<>(userNameService.saveUserName(userRequest),HttpStatus.CREATED);
+    public ApiResponse saveUserName(@RequestBody UserRequest userRequest){
+        ApiResponse apiResponse=userNameService.saveUserName(userRequest);
+   return apiResponse;
+        // return new ResponseEntity<>(userNameService.saveUserName(userRequest),HttpStatus.CREATED);
     }
 @GetMapping("/get")
     public ResponseEntity<Object>getAll(){
